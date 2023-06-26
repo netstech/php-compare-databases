@@ -216,11 +216,11 @@ class Compare extends MY_Controller
     {
         $conn = mysqli_connect($database["hostname"], $database["username"], $database["password"]);
 
-        mysql_select_db($database["database"]);
+        mysqli_select_db($conn,$database["database"]);
 
-        $result = mysql_query("SHOW COLUMNS FROM `$table`");
+        $result = mysqli_query($conn,"SHOW COLUMNS FROM `$table`");
 
-        while ($row = mysql_fetch_assoc($result))
+        while ($row = mysqli_fetch_assoc($result))
         {
             $fields[] = $row;
         }
